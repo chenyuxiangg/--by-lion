@@ -1,0 +1,40 @@
+# Project: CYX_Draw
+# Makefile created by Dev-C++ 5.11
+
+CPP      = g++.exe
+CC       = gcc.exe
+WINDRES  = windres.exe
+OBJ      = CYufa.o Cyuyi.o Lexical_analyzer.o main.o UI.o
+LINKOBJ  = CYufa.o Cyuyi.o Lexical_analyzer.o main.o UI.o
+LIBS     = -L"D:/Dev c++/Dev-Cpp/MinGW64/lib" -L"D:/Dev c++/Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib" -static-libgcc -mwindows
+INCS     = -I"D:/Dev c++/Dev-Cpp/MinGW64/include" -I"D:/Dev c++/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"D:/Dev c++/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include"
+CXXINCS  = -I"D:/Dev c++/Dev-Cpp/MinGW64/include" -I"D:/Dev c++/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"D:/Dev c++/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include" -I"D:/Dev c++/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include/c++"
+BIN      = CYX_Draw.exe
+CXXFLAGS = $(CXXINCS) -std=c++11
+CFLAGS   = $(INCS) -std=c++11
+RM       = rm.exe -f
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before $(BIN) all-after
+
+clean: clean-custom
+	${RM} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CPP) $(LINKOBJ) -o $(BIN) $(LIBS)
+
+CYufa.o: CYufa.cpp
+	$(CPP) -c CYufa.cpp -o CYufa.o $(CXXFLAGS)
+
+Cyuyi.o: Cyuyi.cpp
+	$(CPP) -c Cyuyi.cpp -o Cyuyi.o $(CXXFLAGS)
+
+Lexical_analyzer.o: Lexical_analyzer.cpp
+	$(CPP) -c Lexical_analyzer.cpp -o Lexical_analyzer.o $(CXXFLAGS)
+
+main.o: main.cpp
+	$(CPP) -c main.cpp -o main.o $(CXXFLAGS)
+
+UI.o: UI.cpp
+	$(CPP) -c UI.cpp -o UI.o $(CXXFLAGS)

@@ -1,0 +1,1 @@
+FOR T FROM 0 TO sin(8**9)*(tan(9)+1*6-5/7)+5**3/cos(5) STEP -1 DRAW (T,0);
