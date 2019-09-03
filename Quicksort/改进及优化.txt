@@ -1,0 +1,52 @@
+试使用迭代方法替代递归。节省栈空间和调用时间。
+
+//快排非递归算法  
+void quickSortNoneRecursive(int a[], int n){  
+      
+    int i, j, low, high, temp;  
+    int top = 0;  
+  
+    stackNode *st = (stackNode*) malloc(sizeof(stackNode)*SCALE);  
+  
+    if( !st ){  
+        printf("内存分配故障！");  
+        exit(0);  
+    }  
+  
+    st[top].low = 0;  
+    st[top].high = n-1;  
+  
+    while( top > -1){  
+        low = st[top].low;  
+        high = st[top].high;  
+        top--;  
+        i = low;  
+        j = high;  
+  
+        if( low < high ){  
+            temp = a[low];  
+            while( i < j){  
+                while(i<j && a[j]>=temp){  
+                    j--;  
+                }  
+                a[i] = a[j];  
+                while(i<j && a[i]<=temp){  
+                    i++;  
+                }  
+                a[j] = a[i];  
+            }  
+            a[i] = temp;  
+  
+            if(i <= j){  
+                top++;  
+                st[top].low = low;  
+                st[top].high = i-1;  
+              
+                top++;  
+                st[top].low = ++i;  
+                st[top].high = high;  
+            }  
+        }  
+    }  
+}  
+  
